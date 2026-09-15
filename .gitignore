@@ -1,1 +1,8 @@
 docs/draft/
+
+# Nunca subir arquivos .env (em qualquer subpasta)
+**/.env
+.env
+
+# Volumes com dados persistentes do banco (gerados em runtime)
+docker/entre-nos-supabase/volumes/db/data/
