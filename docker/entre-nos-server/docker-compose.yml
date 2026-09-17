@@ -11,7 +11,7 @@ services:
       # Monta a pasta do app para ter hot-reload em desenvolvimento
       - ../../apps/entre-nos-server:/app
     env_file:
-      - ../entre-nos-server/.env
+      - .env
       - ../entre-nos-supabase/.env
     environment:
       - ENV=development
