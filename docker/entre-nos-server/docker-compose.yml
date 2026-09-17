@@ -1,0 +1,24 @@
+services:
+  server:
+    build:
+      context: ../../apps/entre-nos-server
+      dockerfile: ../../docker/entre-nos-server/dockerfile
+    container_name: entre-nos-server
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      # Monta a pasta do app para ter hot-reload em desenvolvimento
+      - ../../apps/entre-nos-server:/app
+    env_file:
+      - ../entre-nos-server/.env
+      - ../entre-nos-supabase/.env
+    environment:
+      - ENV=development
+      - PYTHONUNBUFFERED=1
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=authenticator
+    depends_on:
+      db:
+        condition: service_healthy

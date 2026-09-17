@@ -6,3 +6,8 @@ docs/draft/
 
 # Volumes com dados persistentes do banco (gerados em runtime)
 docker/entre-nos-supabase/volumes/db/data/
+
+# Python / uv
+.venv/
+__pycache__/
+*.pyc

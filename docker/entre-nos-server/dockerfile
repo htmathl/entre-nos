@@ -1,0 +1,24 @@
+FROM python:3.11-slim
+    
+# 1. Copia o binário oficial do uv para dentro da imagem
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+# 2. Configura a virtualenv do container em /venv
+# (Isso é crucial: evita que o volume montado sobrescreva a .venv do Linux com a .venv do Windows)
+ENV UV_PROJECT_ENVIRONMENT="/venv"
+ENV PATH="/venv/bin:$PATH"
+
+WORKDIR /app
+    
+# 3. Copia apenas arquivos de dependência primeiro (cache rápido do Docker)
+COPY pyproject.toml uv.lock ./
+
+# 4. Instala todas as dependências no /venv
+RUN uv sync --frozen --no-install-project
+
+# 5. Copia o código da aplicação
+COPY . .
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
