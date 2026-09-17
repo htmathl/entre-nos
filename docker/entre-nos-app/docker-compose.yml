@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: ../../apps/entre-nos-app
+      dockerfile: ../../docker/entre-nos-app/dockerfile
+    container_name: entre-nos-app
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      - ../../apps/entre-nos-app:/app
+      - app-node-modules:/app/node_modules
+      - app-next:/app/.next
+    environment:
+      - NODE_ENV=development
+      - HOSTNAME=0.0.0.0
+      - PORT=3001
+      - CI=true
+
+volumes:
+  app-node-modules:
+  app-next:

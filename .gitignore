@@ -11,3 +11,8 @@ docker/entre-nos-supabase/volumes/db/data/
 .venv/
 __pycache__/
 *.pyc
+
+# Node / Next.js
+**/node_modules/
+**/.next/
+**/.pnpm-store/
