@@ -1,0 +1,10 @@
+# ============================================================
+# entre-nós — compose raiz
+# Sobe todos os serviços com: docker compose up -d
+# ============================================================
+
+name: entre-nos
+
+include:
+  - path: ./entre-nos-supabase/docker-compose.yml
+  - path: ./entre-nos-server/docker-compose.yml
