@@ -1,0 +1,20 @@
+services:
+  tailscale:
+    image: tailscale/tailscale:stable
+    container_name: entre-nos-tailscale
+    hostname: entre-nos
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_USERSPACE=true
+      - TS_SERVE_CONFIG=/config/serve.json
+    volumes:
+      # Guarda a chave da máquina e IP para não mudar de endereço ao reiniciar
+      - tailscale-state:/var/lib/tailscale
+      # Configuração declarativa das rotas do Tailscale Serve
+      - ./serve.json:/config/serve.json:ro
+
+volumes:
+  tailscale-state:

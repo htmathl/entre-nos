@@ -1,0 +1,29 @@
+{
+  "TCP": {
+    "80": {
+      "HTTP": true
+    }
+  },
+  "Web": {
+    "entre-nos:80": {
+      "Handlers": {
+        "/": {
+          "Proxy": "http://entre-nos-app:3001"
+        },
+        "/api": {
+          "Proxy": "http://entre-nos-server:8000"
+        }
+      }
+    },
+    "entre-nos.tailb01e14.ts.net:80": {
+      "Handlers": {
+        "/": {
+          "Proxy": "http://entre-nos-app:3001"
+        },
+        "/api": {
+          "Proxy": "http://entre-nos-server:8000"
+        }
+      }
+    }
+  }
+}

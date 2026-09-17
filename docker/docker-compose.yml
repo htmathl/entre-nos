@@ -8,3 +8,5 @@ name: entre-nos
 include:
   - path: ./entre-nos-supabase/docker-compose.yml
   - path: ./entre-nos-server/docker-compose.yml
+  - path: ./entre-nos-app/docker-compose.yml
+  - path: ./entre-nos-tailscale/docker-compose.yml
