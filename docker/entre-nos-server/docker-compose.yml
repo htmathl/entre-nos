@@ -19,6 +19,7 @@ services:
       - POSTGRES_HOST=db
       - POSTGRES_PORT=5432
       - POSTGRES_USER=authenticator
+      - WATCHFILES_FORCE_POLLING=true
     depends_on:
       db:
         condition: service_healthy

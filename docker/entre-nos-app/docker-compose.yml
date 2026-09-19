@@ -16,6 +16,7 @@ services:
       - HOSTNAME=0.0.0.0
       - PORT=3001
       - CI=true
+      - WATCHPACK_POLLING=true
 
 volumes:
   app-node-modules:
